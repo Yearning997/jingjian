@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>鲸舰电玩城管理系统</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        #app {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #409EFF;
+            margin-bottom: 20px;
+        }
+        .status-box {
+            background: #e6f7ff;
+            border: 1px solid #91d5ff;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        button {
+            background: #409EFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background: #337ecc;
+        }
+        .message {
+            color: #67C23A;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <h1 style="color: #409EFF; margin-bottom: 20px;">🎮 鲸舰电玩城管理系统</h1>
+            <div class="status-box">
+                <p>状态: <strong>Vue运行正常</strong></p>
+                <p>时间: <span id="time">{{ currentTime }}</span></p>
+            </div>
+            <button onclick="showMessage()" style="background: #409EFF; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 10px 0;">
+                测试按钮
+            </button>
+            <p id="message" v-if="message" style="color: #67C23A; margin: 10px 0; font-weight: bold;">{{ message }}</p>
+        </div>
+    </div>
+
+    <script>
+        // 简单的JavaScript实现，避免外部依赖
+        let currentTime = new Date().toLocaleString();
+        let message = '';
+        
+        function updateTime() {
+            currentTime = new Date().toLocaleString();
+            const timeElement = document.getElementById('time');
+            if (timeElement) {
+                timeElement.textContent = currentTime;
+            }
+        }
+        
+        function showMessage() {
+            message = '✅ 应用工作正常！按钮点击成功！';
+            const messageElement = document.getElementById('message');
+            if (messageElement) {
+                messageElement.textContent = message;
+            }
+            setTimeout(() => {
+                message = '';
+                const messageElement = document.getElementById('message');
+                if (messageElement) {
+                    messageElement.textContent = '';
+                }
+            }, 3000);
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ 页面加载完成');
+            setInterval(updateTime, 1000);
+            updateTime();
+        });
+    </script>
+</body>
+</html>
