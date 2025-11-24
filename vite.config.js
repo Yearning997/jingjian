@@ -4,6 +4,7 @@ import { resolve } from 'path'
 import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
+  base: '/jingjian/',
   plugins: [vue()],
   resolve: {
     alias: {
