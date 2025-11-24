@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鲸舰电玩城管理系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #304156;
+            color: white;
+        }
+        .logo {
+            padding: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: 1px solid #2b2f3a;
+        }
+        .menu-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .menu-item:hover {
+            background-color: #409EFF;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .main-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">🐋 鲸舰电玩城</div>
+            <div class="menu-item">🏠 首页</div>
+            <div class="menu-item">📅 日常</div>
+            <div class="menu-item">📦 套餐</div>
+            <div class="menu-item">👥 会员</div>
+            <div class="menu-item">🛍️ 商品</div>
+            <div class="menu-item">📊 营销</div>
+            <div class="menu-item">🎮 设备</div>
+            <div class="menu-item">🎨 氛围</div>
+            <div class="menu-item">🎱 台球</div>
+            <div class="menu-item">🌐 线上</div>
+            <div class="menu-item">📈 报表</div>
+            <div class="menu-item">⚙️ 设置
+                <div style="padding-left: 20px; font-size: 14px;">
+                    <div class="menu-item">👤 员工权限</div>
+                    <div class="menu-item">🔍 运营监控</div>
+                    <div class="menu-item">🔧 基础设置</div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header">
+                <h1>欢迎使用鲸舰电玩城管理系统</h1>
+                <p>这是一个功能完整的电玩城管理系统原型</p>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div style="font-size: 24px;">👥</div>
+                    <div class="stat-number">1,234</div>
+                    <div>会员总数</div>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size: 24px;">💰</div>
+                    <div class="stat-number">¥89,432</div>
+                    <div>今日收入</div>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size: 24px;">🎮</div>
+                    <div class="stat-number">456</div>
+                    <div>设备总数</div>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size: 24px;">📦</div>
+                    <div class="stat-number">78</div>
+                    <div>套餐售出</div>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h2>系统功能</h2>
+                <p>✅ 完整的三级菜单系统</p>
+                <p>✅ 响应式设计适配</p>
+                <p>✅ 现代化UI界面</p>
+                <p>✅ 丰富的功能页面</p>
+                <p>✅ 完善的项目结构</p>
+                
+                <h3>使用说明</h3>
+                <p>1. 运行 <code>npm install</code> 安装依赖</p>
+                <p>2. 运行 <code>npm run dev</code> 启动开发服务器</p>
+                <p>3. 访问 <code>http://localhost:3000</code> 查看系统</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>员工管理 - Tab切换演示</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/element-plus/dist/index.full.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+        }
+        .page-container {
+            padding: 20px;
+        }
+        .page-header {
+            margin-bottom: 20px;
+        }
+        .page-title {
+            margin: 0;
+            color: #30BB83;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* Tab导航样式 */
+        .tab-nav {
+            display: flex;
+            border-bottom: 2px solid #e5e5e5;
+            margin-bottom: 20px;
+        }
+        .tab-item {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            color: #666;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .tab-item:hover {
+            color: #30BB83;
+            background: rgba(48, 187, 131, 0.05);
+        }
+        .tab-item.active {
+            color: #4C9DFF;
+            border-bottom-color: #4C9DFF;
+            font-weight: 600;
+        }
+        .tab-content {
+            min-height: 400px;
+        }
+        .content-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .demo-info {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        .demo-info h3 {
+            color: #30BB83;
+            margin-bottom: 15px;
+        }
+        .demo-info p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .highlight {
+            color: #4C9DFF;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="page-container">
+            <div class="page-header">
+                <div class="tab-nav">
+                    <div 
+                        class="tab-item" 
+                        :class="{ active: activeTab === 'staff' }"
+                        @click="switchTab('staff')"
+                    >
+                        员工审核
+                    </div>
+                    <div 
+                        class="tab-item" 
+                        :class="{ active: activeTab === 'invite' }"
+                        @click="switchTab('invite')"
+                    >
+                        邀请员工审核
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content">
+                <div class="content-card">
+                    <!-- 员工审核内容 -->
+                    <div v-if="activeTab === 'staff'" class="demo-info">
+                        <h3>员工审核模块</h3>
+                        <p>这里显示员工列表，可以进行员工的管理操作</p>
+                        <p>包括：<span class="highlight">添加员工、编辑员工、权限设置、删除员工</span>等功能</p>
+                        <p>员工数据包括：员工编号、姓名、手机号、职位、部门、入职时间、状态等</p>
+                    </div>
+
+                    <!-- 邀请员工审核内容 -->
+                    <div v-if="activeTab === 'invite'" class="demo-info">
+                        <h3>邀请员工审核模块</h3>
+                        <p>这里显示员工邀请申请列表，可以审核邀请</p>
+                        <p>功能包括：<span class="highlight">搜索过滤、状态筛选、日期范围筛选、批量审核、详情查看</span></p>
+                        <p>邀请信息包括：邀请码、员工信息、申请职位、邀请人、审核状态等</p>
+                        <br>
+                        <p><strong>Tab切换效果：</strong></p>
+                        <ul style="margin-left: 20px; text-align: left; display: inline-block;">
+                            <li>点击"员工审核"时，文字颜色变为 <span class="highlight">#4C9DFF</span></li>
+                            <li>点击"邀请员工审核"时，该文字颜色变为 <span class="highlight">#4C9DFF</span></li>
+                            <li>底部边框同步高亮，提供清晰的视觉反馈</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+        const { ElMessage } = ElementPlus;
+
+        createApp({
+            setup() {
+                const activeTab = ref('staff');
+
+                const switchTab = (tab) => {
+                    activeTab.value = tab;
+                    ElMessage.success(`切换到${tab === 'staff' ? '员工审核' : '邀请员工审核'}页面`);
+                };
+
+                return {
+                    activeTab,
+                    switchTab
+                };
+            }
+        }).use(ElementPlus).mount('#app');
+    </script>
+</body>
+</html>
