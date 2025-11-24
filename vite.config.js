@@ -4,7 +4,7 @@ import { resolve } from 'path'
 import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/jingjian/' : '/',
+  base: '/jingjian/',
   plugins: [vue()],
   resolve: {
     alias: {
@@ -23,8 +23,10 @@ export default defineConfig({
       output: {
         assetFileNames: 'assets/[name]-[hash][extname]',
         chunkFileNames: 'assets/[name]-[hash].js',
-        entryFileNames: 'assets/[name]-[hash].js'
+        entryFileNames: 'assets/[name]-[hash].js',
+        format: 'iife'
       }
-    }
+    },
+    target: 'es2015'
   }
 })
